@@ -3,13 +3,13 @@ import Appbar from "../components/Appbar";
 import { useBlogs } from "../hoooks";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { authTokenState, isLogin } from "../atom";
+import { useRecoilValue } from "recoil";
+import { isLogin } from "../atom";
 import { useEffect } from "react";
 
 const Blogs = () => {
   const { loading, blogs } = useBlogs();
-  const [token, setAuthToken] = useRecoilState(authTokenState);
+
   const login = useRecoilValue(isLogin);
   const navigate = useNavigate();
   useEffect(() => {

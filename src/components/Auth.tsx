@@ -1,13 +1,13 @@
 import { SingupIutput } from "@bhawishdhanjani/medium-common";
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 import { authTokenState } from "../atom";
 import { useRecoilState } from "recoil";
 
 const Auth = ({ type }: { type: "signin" | "signup" }) => {
-  const [token, setAuthToken] = useRecoilState(authTokenState);
+  const [, setAuthToken] = useRecoilState(authTokenState);
   const navigate = useNavigate();
   const [postInputs, setPostInputs] = useState<SingupIutput>({
     name: "",

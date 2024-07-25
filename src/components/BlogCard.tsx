@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { authTokenState, isLogin } from "../atom";
+import { authTokenState } from "../atom";
 
 interface BlogCardProps {
   id: string;
@@ -78,7 +78,7 @@ export function AppbarAvatar({
 }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const [token, setAuthToken] = useRecoilState(authTokenState);
+  const [, setAuthToken] = useRecoilState(authTokenState);
   return (
     <div className="relative">
       <div
