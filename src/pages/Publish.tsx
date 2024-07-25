@@ -1,11 +1,20 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Appbar from "../components/Appbar";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { useRecoilValue } from "recoil";
+import { isLogin } from "../atom";
+import { useNavigate } from "react-router-dom";
 
 const Publish = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const login = useRecoilValue(isLogin);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!login) navigate("/signin");
+  }, [login]);
 
   return (
     <div>

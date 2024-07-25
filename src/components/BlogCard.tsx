@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { authTokenState, isLogin } from "../atom";
 
 interface BlogCardProps {
   id: string;
@@ -76,6 +78,7 @@ export function AppbarAvatar({
 }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const [token, setAuthToken] = useRecoilState(authTokenState);
   return (
     <div className="relative">
       <div
@@ -99,6 +102,8 @@ export function AppbarAvatar({
               className="w-full font-semibold p-1 text-base cursor-pointer rounded hover:bg-blue-200"
               onClick={() => {
                 localStorage.removeItem("token");
+
+                setAuthToken("");
                 navigate("/signin");
               }}
             >

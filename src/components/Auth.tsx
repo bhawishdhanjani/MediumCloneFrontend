@@ -3,8 +3,11 @@ import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import { Link, json, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
+import { authTokenState } from "../atom";
+import { useRecoilState } from "recoil";
 
 const Auth = ({ type }: { type: "signin" | "signup" }) => {
+  const [token, setAuthToken] = useRecoilState(authTokenState);
   const navigate = useNavigate();
   const [postInputs, setPostInputs] = useState<SingupIutput>({
     name: "",
@@ -20,6 +23,7 @@ const Auth = ({ type }: { type: "signin" | "signup" }) => {
       );
       const jwt = response.data.jwt;
       localStorage.setItem("token", jwt);
+      setAuthToken(jwt);
       navigate("/blogs");
     } catch (error) {}
   }
