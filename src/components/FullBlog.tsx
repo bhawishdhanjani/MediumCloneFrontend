@@ -7,13 +7,13 @@ const FullBlog = ({ blog }: { blog: Blog }) => {
     <div>
       <Appbar />
       <div className="flex mt-3 justify-center">
-        <div className="grid grid-cols-12 w-full px-10 max-w-screen-2xl">
-          <div className="col-span-8 pr-2">
+        <div className="grid grid-cols-12  w-full px-10 max-w-screen-2xl">
+          <div className="col-span-12 pb-2 lg:col-span-8 pr-2 border-b-2 border-slate-300">
             <div className="text-5xl font-extrabold ">{blog.title}</div>
             <div className="text-slate-500 pt-2">Post on 2nd December 2023</div>
             <div className="pt-4 text-justify">{blog.content}</div>
           </div>
-          <div className="col-span-4">
+          <div className="col-span-12 mt-2  lg:col-span-4">
             <div className="text-slate-600 text-lg">Author</div>
             <div className="flex w-full">
               <div className="pr-4 flex flex-col justify-center">
